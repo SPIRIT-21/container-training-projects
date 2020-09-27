@@ -1,0 +1,183 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: 2020-09-09T13:18:35Z
+  generateName: hello-nginx-6c7d975c9b-
+  labels:
+    app: hello-nginx
+    pod-template-hash: 6c7d975c9b
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:generateName: {}
+        f:labels:
+          .: {}
+          f:app: {}
+          f:pod-template-hash: {}
+        f:ownerReferences:
+          .: {}
+          k:{"uid":"a626e31a-3a6c-4e92-8158-c59d322b573d"}:
+            .: {}
+            f:apiVersion: {}
+            f:blockOwnerDeletion: {}
+            f:controller: {}
+            f:kind: {}
+            f:name: {}
+            f:uid: {}
+      f:spec:
+        f:containers:
+          k:{"name":"nginx"}:
+            .: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:ports:
+              .: {}
+              k:{"containerPort":80,"protocol":"TCP"}:
+                .: {}
+                f:containerPort: {}
+                f:protocol: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:terminationGracePeriodSeconds: {}
+    manager: kube-controller-manager
+    operation: Update
+    time: 2020-09-09T13:18:35Z
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"10.1.24.18"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: 2020-09-24T06:47:45Z
+  name: hello-nginx-6c7d975c9b-hv9ns
+  namespace: test
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: hello-nginx-6c7d975c9b
+    uid: a626e31a-3a6c-4e92-8158-c59d322b573d
+  resourceVersion: "1836850"
+  selfLink: /api/v1/namespaces/test/pods/hello-nginx-6c7d975c9b-hv9ns
+  uid: 544d1adf-e4ab-4663-84a2-6d4ecf5a1063
+spec:
+  containers:
+  - image: nginx:latest
+    imagePullPolicy: Always
+    name: nginx
+    ports:
+    - containerPort: 80
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-7v2t4
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: ip-172-31-42-133
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: default-token-7v2t4
+    secret:
+      defaultMode: 420
+      secretName: default-token-7v2t4
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: 2020-09-09T13:18:35Z
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: 2020-09-24T06:47:45Z
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: 2020-09-24T06:47:45Z
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: 2020-09-09T13:18:35Z
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://f03ba6241d3486429409e03d8163541dda8839339171e9892387d0ecc76f63d2
+    image: docker.io/library/nginx:latest
+    imageID: docker.io/library/nginx@sha256:c628b67d21744fce822d22fdcc0389f6bd763daac23a6b77147d0712ea7102d0
+    lastState:
+      terminated:
+        containerID: containerd://8a7e47f51825ba487b736dab0581eee4f52e712d1e2f4bbd306295d769667b49
+        exitCode: 255
+        finishedAt: 2020-09-24T06:47:34Z
+        reason: Unknown
+        startedAt: 2020-09-09T13:18:36Z
+    name: nginx
+    ready: true
+    restartCount: 1
+    started: true
+    state:
+      running:
+        startedAt: 2020-09-24T06:47:44Z
+  hostIP: 172.31.42.133
+  phase: Running
+  podIP: 10.1.24.18
+  podIPs:
+  - ip: 10.1.24.18
+  qosClass: BestEffort
+  startTime: 2020-09-09T13:18:35Z

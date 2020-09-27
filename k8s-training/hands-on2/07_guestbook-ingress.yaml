@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: gb-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    # WICHTIG: hier den eigenen NAMESPACE in der URL angeben
+  - host: gb-NAME.apps.training.iot.spirit21.com
+    http:
+      paths:
+      - backend:
+          serviceName: frontend
+          servicePort: 80
+        pathType: ImplementationSpecific
