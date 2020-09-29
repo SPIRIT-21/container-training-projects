@@ -1,0 +1,38 @@
+1. Update
+kubectl --record deployment.apps/nginx-deployment set image deployment.v1.apps/nginx-deployment nginx=nginx:1.16.1
+oder
+kubectl set image deployment/nginx-deployment nginx=nginx:1.16.1 --record
+oder
+kubectl edit deployment.v1.apps/nginx-deployment
+
+1a. Vorbereitung für später:
+kubectl set resources deployment.v1.apps/nginx-deployment -c=nginx --limits=cpu=200m,memory=512Mi
+
+2. get status
+kubectl rollout status deployment.v1.apps/nginx-deployment
+
+3. get replicaset
+kubectl get rs
+
+4. get details
+kubectl describe deployments
+
+5. rollback
+fehler machen: kubectl set image deployment.v1.apps/nginx-deployment nginx=nginx:1.161 --record=true
+status: kubectl rollout status deployment.v1.apps/nginx-deployment
+prüfen: kubectl get rs
+und kubectl get pods
+--> brauchen rollback
+history(nur mit --record): kubectl rollout history deployment.v1.apps/nginx-deployment
+details: kubectl rollout history deployment.v1.apps/nginx-deployment --revision=2
+rollback: kubectl rollout undo deployment.v1.apps/nginx-deployment
+oder : kubectl rollout undo deployment.v1.apps/nginx-deployment --to-revision=2
+kubectl get deployment nginx-deployment
+alles gut
+
+6. skalierung
+kubectl scale deployment.v1.apps/nginx-deployment --replicas=10
+
+7. autoscaling (nur mit installiertem HPA)
+Dafür vorher: kubectl set resources deployment.v1.apps/nginx-deployment -c=nginx --limits=cpu=200m,memory=512Mi
+kubectl autoscale deployment.v1.apps/nginx-deployment --min=10 --max=15 --cpu-percent=80
