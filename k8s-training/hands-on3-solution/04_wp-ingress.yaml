@@ -1,0 +1,16 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: wp-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+    # WICHTIG: hier den eigenen NAMESPACE in der URL angeben
+  - host: wp-loldiges.apps.training.iot.spirit21.com
+    http:
+      paths:
+      - backend:
+          serviceName: wordpress
+          servicePort: 80
+        pathType: ImplementationSpecific
